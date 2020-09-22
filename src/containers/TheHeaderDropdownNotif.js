@@ -26,7 +26,7 @@ const TheHeaderDropdownNotif = () => {
           <strong>Você tem {notifications.length} notificações</strong>
         </CDropdownItem>
         {notifications.map(notification => (
-          <CDropdownItem>
+          <CDropdownItem key={notification.text}>
             <CIcon
               name={notification.icon}
               className={`mr-2 text-${notification.class}`}

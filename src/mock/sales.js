@@ -802,7 +802,6 @@ const yearsFilter = () => {
 
 const categoriesFilter = () => {
   const tempCategories = [];
-  let count = 1;
   sales.forEach(sale => {
     const categoryExists = tempCategories.find(
       category => sale.name === category.name,
@@ -812,11 +811,10 @@ const categoriesFilter = () => {
     );
     if (!categoryExists) {
       if (index === -1) {
-        tempCategories.push({ id: count, name: sale.name });
+        tempCategories.push({ name: sale.name });
       } else {
-        tempCategories.splice(index, 0, { id: count, name: sale.name });
+        tempCategories.splice(index, 0, { name: sale.name });
       }
-      count += 1;
     }
   });
   return tempCategories;
