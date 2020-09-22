@@ -49,7 +49,10 @@ const Sales = () => {
   const [filteredSales, setFilteredSales] = useState(salesCategoryTotals);
 
   useEffect(() => {
-    if (selectedCategory === '' && selectedYear === 0) {
+    if (
+      selectedCategory === '' &&
+      (selectedYear === 0 || selectedYear === '0')
+    ) {
       setFilteredSales(salesCategoryTotals);
     } else {
       setFilteredSales(
@@ -177,7 +180,7 @@ const Sales = () => {
                   ))}
                 </CCol>
                 <CCol xs="12" md="6" xl="6">
-                  {selectedYear > 0 && selectedCategory === '' && (
+                  {Number(selectedYear) > 0 && selectedCategory === '' && (
                     <>
                       <CChart
                         type="doughnut"
@@ -219,7 +222,7 @@ const Sales = () => {
                       <hr className="m-4" />
                     </>
                   )}
-                  {selectedCategory !== '' && selectedYear === 0 && (
+                  {selectedCategory !== '' && Number(selectedYear) === 0 && (
                     <>
                       <CChart
                         type="bar"
